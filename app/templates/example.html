@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance Pairs Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Binance Pairs Tracker</h1>
+    </header>
+
+    <main>
+        <!-- Popular Pairs Section -->
+        <section id="popular-pairs">
+            <h2>Popular Pairs</h2>
+            <div class="pairs-list">
+                <!-- Dynamic content populated here -->
+            </div>
+        </section>
+
+        <!-- Pair Search Section -->
+        <section id="pair-search">
+            <h2>Search or Select a Pair</h2>
+            <form id="pair-form">
+                <label for="pair-input">Enter Pair:</label>
+                <input type="text" id="pair-input" placeholder="e.g., BTCUSDT">
+
+                <label for="pair-select">or Select from List:</label>
+                <select id="pair-select">
+                    <option value="">Select a pair</option>
+                    {% for pair in all_pairs %}
+                        <option value="{{ pair }}">{{ pair }}</option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit">Show Pair</button>
+            </form>
+            <div id="pair-details">
+                <p>Pair: </p>
+                <p>Price: </p>
+            </div>
+        </section>
+
+        <!-- Telegram Authentication Section -->
+        <section id="telegram-auth">
+            <h2>Telegram Integration</h2>
+            <div id="auth-status">
+                <button id="auth-button">Login with Telegram</button>
+            </div>
+            <div id="notification-settings" style="display: none;">
+                <h3>Notification Settings</h3>
+                <label for="notify-pair">Pair:</label>
+                <input type="text" id="notify-pair" placeholder="e.g., ETHUSDT">
+
+                <label for="notify-interval">Interval (seconds):</label>
+                <input type="number" id="notify-interval" min="1" value="60">
+
+                <button id="start-notifications">Start Notifications</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Binance Pairs Tracker</p>
+    </footer>
+
+    <script src="/static/js/popular_pairs.js"></script>
+    <script src="/static/js/currency_pair.js"></script>
+
+</body>
+</html>
