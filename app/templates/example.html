@@ -47,17 +47,35 @@
         <section id="telegram-auth">
             <h2>Telegram Integration</h2>
             <div id="auth-status">
-                <button id="auth-button">Login with Telegram</button>
+                <script
+                    id="telegram-widget-script"
+                    src="https://telegram.org/js/telegram-widget.js?22"
+                    data-telegram-login="EasyBinanceWatcherBot"
+                    data-size="large"
+                    data-onauth="onTelegramAuth(user)"
+                    data-request-access="write">
+                </script>
             </div>
             <div id="notification-settings" style="display: none;">
                 <h3>Notification Settings</h3>
-                <label for="notify-pair">Pair:</label>
-                <input type="text" id="notify-pair" placeholder="e.g., ETHUSDT">
+                <div style="display: flex; align-items: center;">
+                    <div style="width: 40%; padding: 0.5rem">
+                        <label for="notify-pair">Pair:</label>
+                        <input type="text" id="notify-pair" placeholder="e.g., ETHUSDT" style="width: 100%;">
+                    </div>
+                    <div style="width: 40%; padding: 0.5rem">
+                        <label for="notify-interval">Interval (seconds):</label>
+                        <input type="number" id="notify-interval" min="1" value="60" style="width: 100%;">
+                    </div>
+                    <div style="width: 20%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center;">
+                        <label for="start-notifications">Action:</label>
+                        <button id="start-notifications" style="height: 100%;">Start Notification</button>
+                    </div>
+                </div>
 
-                <label for="notify-interval">Interval (seconds):</label>
-                <input type="number" id="notify-interval" min="1" value="60">
-
-                <button id="start-notifications">Start Notifications</button>
+                <!-- Список созданных уведомлений -->
+                <h4>Active Notifications</h4>
+                <ul id="notification-list" style="list-style-type: none; padding: 0;"></ul>
             </div>
         </section>
     </main>
@@ -68,6 +86,9 @@
 
     <script src="/static/js/popular_pairs.js"></script>
     <script src="/static/js/currency_pair.js"></script>
+    <script type="module" src="/static/js/auth.js"></script>
+    <script type="module" src="/static/js/create_notif.js"></script>
+
 
 </body>
 </html>

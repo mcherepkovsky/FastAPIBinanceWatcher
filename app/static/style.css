@@ -70,6 +70,11 @@ button:hover {
     background-color: #1c6ac9;
 }
 
+#auth-status {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
 #auth-button {
     margin: 0;
 }

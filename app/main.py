@@ -6,7 +6,9 @@ from fastapi.staticfiles import StaticFiles
 from app.config import settings
 from app.redis_tools.tools import RedisTools
 from app.services.binance import router as binance_router
+from app.users.router import router as users_router
 from app.pages.router import router as pages_router
+from app.subscriptions.router import router as subscriptions_router
 
 import aiohttp
 
@@ -71,6 +73,8 @@ async def on_loop_startup():
 
 
 app.include_router(binance_router)
+app.include_router(users_router)
+app.include_router(subscriptions_router)
 app.include_router(pages_router)
 
 origins = [

@@ -10,6 +10,15 @@ class Settings(BaseSettings):
     ALL_PAIRS_KEY: HttpUrl
     BINANCE_API_URL: HttpUrl
 
+    DB_HOST: str
+    DB_PORT: int
+    DB_USER: str
+    DB_PASS: str
+    DB_NAME: str
+
+    SECRET_KEY: str
+    ALGORITHM: str
+
     class Config:
         env_file = ".env"
 
