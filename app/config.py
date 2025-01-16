@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     ALGORITHM: str
 
+    TG_BOT_TOKEN: str
+
     class Config:
         env_file = ".env"
 
